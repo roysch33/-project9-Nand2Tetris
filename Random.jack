@@ -1,0 +1,37 @@
+class Random {
+    static int seed;
+
+    // Set the seed based on user input time
+    function void setSeed(int newSeed) {
+        let seed = newSeed;
+        return;
+    }
+
+    // Returns a pseudo-random number
+    function int rand() {
+        // A simple Linear Congruential Generator logic
+        // seed = (seed * 20251 + 12345)
+        let seed = (seed * 20251) + 12345;
+        
+        // Handle overflow to keep it positive-ish (simple mask)
+        if (seed < 0) {
+            let seed = -(seed);
+        }
+        return seed;
+    }
+
+    // Returns a number between low and high (inclusive)
+    function int randRange(int low, int high) {
+        var int range;
+        var int val;
+        var int mod;
+        
+        let range = high - low + 1;
+        let val = Random.rand();
+        
+        // Calculate modulo manually: a % b = a - (b * (a / b))
+        let mod = val - (range * (val / range));
+        
+        return low + mod;
+    }
+}
