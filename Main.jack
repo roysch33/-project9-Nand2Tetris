@@ -1,0 +1,13 @@
+class Main {
+    function void main() {
+        var ReactionGame game;
+        
+        // Initialize and run the game
+        let game = ReactionGame.new();
+        do game.run();
+        
+        // Clean up
+        do game.dispose();
+        return;
+    }
+}
